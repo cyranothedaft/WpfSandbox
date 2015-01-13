@@ -18,7 +18,6 @@ namespace WpfApplication {
          base.OnStartup(e);
 
          MainViewModel mainViewModel = new MainViewModel();
-         mainViewModel.CheckBoxContent = "Check Me";
 
          MainWindow mainWindow = new MainWindow();
          mainWindow.ViewModel = mainViewModel;
