@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <StackPanel>
-        <CheckBox Content="1: Allow Toggling 2" Checked="{Binding Path=CheckBox1IsChecked}" Command="{Binding ToggleCheckBox1Command}"></CheckBox>
-        <CheckBox Content="2: "></CheckBox>
+        <Label Content="Use Button 1 to enable/disable Button 2:"></Label>
+        <Button Content="{Binding Path=Button1Content}" Command="{Binding Button1Command}"></Button>
+        <Button Content="{Binding Path=Button2Content}" Command="{Binding Button2Command}"></Button>
     </StackPanel>
 </Window>
