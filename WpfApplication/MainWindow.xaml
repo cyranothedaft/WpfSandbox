@@ -1,10 +1,59 @@
 ﻿<Window x:Class="WpfApplication.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="800">
     <StackPanel>
         <Label Content="Use Button 1 to enable/disable Button 2:"></Label>
         <Button Content="{Binding Path=Button1Content}" Command="{Binding Button1Command}"></Button>
         <Button Content="{Binding Path=Button2Content}" Command="{Binding Button2Command}"></Button>
-    </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <ComboBox ItemsSource="{Binding DropDownItems}" SelectedItem="{Binding DropDownSelectedItem, Mode=TwoWay}" Width="100" DisplayMemberPath="Desc"/>
+            <Label>You selected:</Label>
+            <Label Content="{Binding Path=DropDownSelectedItemText}"></Label>
+        </StackPanel>
+
+        <Label Content="ListView:"></Label>
+        <ListView Grid.Row="1" ItemsSource="{Binding ListViewItems}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Name" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Desc}" Header="Desc" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+      <Label Content="TextBox:"></Label>
+      <Grid>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+         </Grid.ColumnDefinitions>
+         <TextBox Text="{Binding Path=TextBoxText, Mode=TwoWay}" Grid.Column="0" />
+         <Label Content="{Binding Path=TextBoxText}" Grid.Column="1" />
+      </Grid>
+
+      <Label Content="Numeric TextBox:"></Label>
+      <Grid>
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+         </Grid.ColumnDefinitions>
+         <TextBox Text="{Binding Path=NumericTextBoxValue, Mode=TwoWay}" Grid.Column="0" />
+         <Label Content="{Binding Path=NumericTextBoxValue}" Grid.Column="1" />
+      </Grid>
+
+      <Label Content="Image/ImageSource:"></Label>
+      <Grid>
+          <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="Auto" />
+             <ColumnDefinition Width="*" />
+             <ColumnDefinition Width="50" />
+          </Grid.ColumnDefinitions>
+          <Label Content="Image:" Grid.Column="0" />
+          <Label Content="{Binding Path=ImageFilePath}" Grid.Column="1" />
+          <Button Content="..." Command="{Binding SetImageCommand}" Grid.Column="2" />
+       </Grid>
+      <Image Source="{Binding Path=Image}"/>
+   </StackPanel>
 </Window>
